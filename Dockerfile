@@ -11,5 +11,5 @@ RUN CGO_ENABLED=0 GOOS=linux go install -ldflags="-w -s" -v github.com/dcberg/ku
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
-COPY /go/bin/adapter /bin/adapter
+COPY /go/bin/linux_amd64/adapter /bin/adapter
 CMD ["/bin/adapter"]

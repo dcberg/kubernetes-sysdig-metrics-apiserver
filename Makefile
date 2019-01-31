@@ -10,7 +10,7 @@ check: test
 	@bash -c 'if [ -n "$(gofmt -s -l .)" ]; then echo "Go code is not formatted:"; gofmt -s -d -e .; exit 1;fi'
 
 install:
-	CGO_ENABLED=0 GOOS=linux go install -v ./...
+	CGO_ENABLED=0 GOOS=linux go install -ldflags="-w -s" -v github.com/dcberg/kubernetes-sysdig-metrics-apiserver/cmd/adapter
 
 build-image:
 	docker build --no-cache -t $(IMAGE):$(VERSION) .
